@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать эмулятор</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div class="container">
+    <form action="#" th:action="@{/emulators/edit}" th:object="${emulator}" method="post">
+        <label for="id">ID</label>
+        <input readonly type="number" th:field="*{id_emulator}" id="id" placeholder="ID">
+        <br/>
+        <label for="nameEmulator">Эмулятор</label>
+        <input type="text" th:field="*{nameEmulator}" id="nameEmulator" placeholder="эмулятор">
+        <br/>
+        <input type="submit" value="Update emulator">
+    </form>
+</div>
+</form>
+</body>
+</html>

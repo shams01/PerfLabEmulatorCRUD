@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать эмулятор</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div class="container">
+    <form action="#" th:action="@{/configs/edit/{id}(id=${config.emulator.id_emulator})}" th:object="${config}" method="post">
+        <label for="id">ID</label>
+        <input readonly type="number" th:field="*{config_id}" id="id" placeholder="ID">
+        <br/>
+        <label for="nameConfig">Имя</label>
+        <input type="text" th:field="*{nameConfig}" id="nameConfig" placeholder="Имя Конфига">
+        <br/>
+        <label for="specificationConfig">Спецификация</label>
+        <input type="text" th:field="*{specificationConfig}" id="specificationConfig"
+               placeholder="Спецификация Конфига">
+        <br/>
+        <input type="submit" value="Update Config">
+    </form>
+</div>
+</form>
+</body>
+</html>

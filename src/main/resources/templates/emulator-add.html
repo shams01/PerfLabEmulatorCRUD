@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить эмулятор</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/emulators/add}" th:object="${emulator}" method="post">
+        <label for="nameEmulator">Эмулятор</label>
+        <input type="text" th:field="*{nameEmulator}" id="nameEmulator" placeholder="Название эмулятора">
+        <input type="submit" value="Create emulator">
+    </form>
+</div>
+</body>
+</html>

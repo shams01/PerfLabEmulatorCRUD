@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список эмуляторов</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div class="container" th:switch="${emulators}">
+    <h2 th:case="null">Эмуляторы не найдены!</h2>
+    <div th:case="*">
+        <h2>Список эмуляторов</h2>
+        <p><a href="/emulators/add">Add emulator</a></p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Emulator Name</th>
+                <th></th>
+                <th></th>
+                <th>Configs</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="emulator : ${emulators}">
+                <td th:text="${emulator.id_emulator}"/>
+                <td th:text="${emulator.nameEmulator}"/>
+                <td><a th:href="@{~/emulators/edit/{id}(id=${emulator.id_emulator})}">Edit Emul</a></td>
+                <td><a th:href="@{~/emulators/delete/{id}(id=${emulator.id_emulator})}" colspan="3">Delete Emul</a></td>
+                <td>
+                    <table>
+                        <tbody>
+                        <tr th:each="config : ${emulator.configList}">
+                            <td th:text="${config.nameConfig}"/>
+                            <td th:text="${config.specificationConfig}"/>
+                            <td><a th:href="@{~/configs/edit/{id}(id=${config.config_id})}">Edit Config</a></td>
+                            <td><a th:href="@{~/configs/delete/{id}(id=${config.config_id})}">Delete Config</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td><a th:href="@{~/configs/add/{id}(id=${emulator.id_emulator})}">Add Config</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
